@@ -71,4 +71,4 @@ This project is open source. Fork it, update `data/progress.js` with your own na
 
 ---
 
-Built by [@yourusername](https://github.com/yourusername) · MIT License
+Built by [@arman080325](https://github.com/arman080325) · MIT License
