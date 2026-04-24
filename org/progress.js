@@ -7,9 +7,9 @@
 const DEVTRACKR_DATA = {
 
   meta: {
-    name: "Your Name",           // ← Change this
+    name: "Arman Ahemad Khan",           // ← Change this
     title: "Full Stack Dev in Progress",
-    github: "yourusername",      // ← Change this
+    github: "arman080325",      // ← Change this
     startDate: "2025-01-01",
     goal: "Become a job-ready Full Stack Developer + Security Analyst by Dec 2025"
   },
@@ -155,12 +155,12 @@ const DEVTRACKR_DATA = {
       id: "cybersec",
       name: "CyberSecurity",
       icon: "⬡",
-      color: "#22d3ee",
-      progress: 10,
-      streak: 2,
-      totalHours: 12,
-      weeklyTarget: 5,
-      deadline: "2025-12-31",
+      color: "#0fd526",
+      progress: 0,
+      streak: 0,
+      totalHours: 0,
+      weeklyTarget: 0,
+      deadline: "2026-04-30",
       status: "active",
       topics: [
         { name: "Networking Fundamentals", done: true },
