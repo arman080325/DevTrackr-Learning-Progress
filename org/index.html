@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevTrackr — Learning Progress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated grid background -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Dev<span class="logo-accent">Trackr</span></span>
+      </div>
+      <div class="user-card">
+        <div class="user-avatar" id="sidebarAvatar">YN</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebarName">Your Name</div>
+          <div class="user-title" id="sidebarTitle">Dev in Progress</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-label">DOMAINS</div>
+      <ul id="domainNav"></ul>
+
+      <div class="nav-label" style="margin-top:24px">TOOLS</div>
+      <ul>
+        <li class="nav-item" onclick="showSection('overview')">
+          <span class="nav-icon">◈</span> Overview
+        </li>
+        <li class="nav-item" onclick="showSection('logEntry')">
+          <span class="nav-icon">+</span> Add Today's Log
+        </li>
+        <li class="nav-item" onclick="showSection('stats')">
+          <span class="nav-icon">▣</span> Stats & Charts
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="total-hours-box">
+        <div class="total-hours-label">TOTAL HOURS LOGGED</div>
+        <div class="total-hours-value" id="totalHoursDisplay">0h</div>
+      </div>
+      <a class="github-link" id="githubLink" href="#" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub Profile
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+        <div class="page-title" id="pageTitle">OVERVIEW</div>
+      </div>
+      <div class="topbar-right">
+        <div class="date-display" id="currentDate"></div>
+        <div class="streak-badge" id="globalStreak">
+          <span>🔥</span> <span id="streakCount">0</span> day streak
+        </div>
+      </div>
+    </header>
+
+    <!-- OVERVIEW SECTION -->
+    <section class="section active" id="section-overview">
+
+      <!-- Goal banner -->
+      <div class="goal-banner" id="goalBanner">
+        <span class="goal-icon">🎯</span>
+        <span class="goal-text" id="goalText">Loading goal...</span>
+      </div>
+
+      <!-- Domain cards grid -->
+      <div class="domain-grid" id="domainGrid"></div>
+
+      <!-- Today's logs -->
+      <div class="section-title">TODAY'S ACTIVITY</div>
+      <div class="todays-logs" id="todaysLogs"></div>
+
+    </section>
+
+    <!-- DOMAIN DETAIL SECTION -->
+    <section class="section" id="section-domain">
+      <div id="domainDetailContent"></div>
+    </section>
+
+    <!-- LOG ENTRY SECTION -->
+    <section class="section" id="section-logEntry">
+      <div class="section-title">ADD TODAY'S LOG</div>
+      <div class="log-form-wrap">
+        <div class="log-form" id="logForm">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>DOMAIN</label>
+              <select id="logDomain"></select>
+            </div>
+            <div class="form-group">
+              <label>DATE</label>
+              <input type="date" id="logDate" />
+            </div>
+            <div class="form-group">
+              <label>HOURS STUDIED</label>
+              <input type="number" id="logHours" min="0.5" max="12" step="0.5" placeholder="e.g. 2.5" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>WHAT DID YOU LEARN TODAY?</label>
+            <textarea id="logLearned" rows="3" placeholder="Describe what you learned in detail..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>NEXT TARGET</label>
+            <input type="text" id="logNext" placeholder="What will you tackle tomorrow?" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>RESOURCES USED</label>
+              <input type="text" id="logResources" placeholder="URLs or book names, comma separated" />
+            </div>
+            <div class="form-group">
+              <label>MOOD / ENERGY</label>
+              <select id="logMood">
+                <option value="🔥">🔥 On Fire</option>
+                <option value="💪">💪 Productive</option>
+                <option value="😊">😊 Good</option>
+                <option value="🧠">🧠 Focused</option>
+                <option value="😤">😤 Challenged</option>
+                <option value="😴">😴 Tired</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>NOTES / REFLECTIONS</label>
+            <textarea id="logNotes" rows="2" placeholder="Any extra thoughts, aha moments, struggles..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-primary" onclick="submitLog()">
+              <span>⬡</span> SAVE LOG ENTRY
+            </button>
+            <div class="form-hint">
+              💡 Copy the generated code from the console and paste into <code>data/progress.js</code>
+            </div>
+          </div>
+
+          <div class="generated-code-wrap" id="generatedCodeWrap" style="display:none">
+            <div class="section-title" style="margin-top:0">GENERATED CODE — COPY TO progress.js</div>
+            <pre class="generated-code" id="generatedCode"></pre>
+            <button class="btn-secondary" onclick="copyCode()">⬡ COPY CODE</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="section" id="section-stats">
+      <div class="section-title">PROGRESS ANALYTICS</div>
+      <div id="statsContent"></div>
+    </section>
+
+  </main>
+
+  <script src="data/progress.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
